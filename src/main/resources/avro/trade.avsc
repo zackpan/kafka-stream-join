@@ -1,0 +1,39 @@
+{
+  "namespace": "com.abn.demo.stream.model",
+  "type": "record",
+  "name": "Trade",
+  "fields": [
+      { 
+        "name": "trade_id", 
+        "type": "string",
+        "avro.java.string": "String"
+      },
+      { 
+        "name": "account",  
+        "type": "string",
+        "avro.java.string": "String"
+      },
+      { 
+        "name": "product", 
+        "type": "string",
+        "avro.java.string": "String"
+      },
+      { 
+        "name": "exchange",
+        "type": ["null", "string"], // optional
+        "avro.java.string": "String"
+      },  
+      { 
+        "name": "price",
+        "type": "double"
+      },      
+      { 
+        "name": "quantity", 
+        "type": "int"
+      },
+      { 
+        "name": "execution_time",
+        "type": "long"
+      }    
+    ]
+}

@@ -1,0 +1,23 @@
+spring:
+  kafka:
+    bootstrap-servers:
+      - 10.248.149.147:9092
+    properties:
+      schema.registry.url: http://10.248.149.147:8091
+    consumer:
+      group-id: group_id
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+ 
+    streams:
+      application-id:
+        - stream-demo
+      default.deserialization.exception.handler: org.apache.kafka.streams.errors.LogAndFailExceptionHandler
+  application:
+    name: stream-demo

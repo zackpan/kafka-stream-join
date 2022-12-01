@@ -1,0 +1,16 @@
+{
+  "namespace": "com.abn.demo.stream.model",
+  "type": "record",
+  "name": "Product",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string",
+      "avro.java.string": "String"
+    },
+    {
+      "name": "id",
+      "type": "int"
+    }
+  ]
+}
