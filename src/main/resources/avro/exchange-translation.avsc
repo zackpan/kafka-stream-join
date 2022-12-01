@@ -1,0 +1,22 @@
+{
+  "namespace": "com.abn.demo.stream.model",
+  "type": "record",
+  "name": "ExchangeTranslation",
+  "fields": [
+      { 
+        "name": "exchange", 
+        "type": "string",
+        "avro.java.string": "String"
+      },
+      { 
+        "name": "raw_exchange",  
+        "type": "string",
+        "avro.java.string": "String"
+      },
+      { 
+        "name": "source", 
+        "type": "string",
+        "avro.java.string": "String"
+      }
+    ]
+}

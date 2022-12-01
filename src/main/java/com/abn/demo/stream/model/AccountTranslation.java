@@ -13,26 +13,26 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class Account extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -7449435079932370343L;
+public class AccountTranslation extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 3510108427414234035L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Account\",\"namespace\":\"com.abn.demo.stream.model\",\"fields\":[{\"name\":\"account\",\"type\":\"string\",\"avro.java.string\":\"String\"},{\"name\":\"client_number\",\"type\":\"long\"},{\"name\":\"firm\",\"type\":\"string\",\"avro.java.string\":\"String\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AccountTranslation\",\"namespace\":\"com.abn.demo.stream.model\",\"fields\":[{\"name\":\"account\",\"type\":\"string\",\"avro.java.string\":\"String\"},{\"name\":\"raw_account\",\"type\":\"string\",\"avro.java.string\":\"String\"},{\"name\":\"source\",\"type\":\"string\",\"avro.java.string\":\"String\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<Account> ENCODER =
-      new BinaryMessageEncoder<Account>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<AccountTranslation> ENCODER =
+      new BinaryMessageEncoder<AccountTranslation>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<Account> DECODER =
-      new BinaryMessageDecoder<Account>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<AccountTranslation> DECODER =
+      new BinaryMessageDecoder<AccountTranslation>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<Account> getEncoder() {
+  public static BinaryMessageEncoder<AccountTranslation> getEncoder() {
     return ENCODER;
   }
 
@@ -40,7 +40,7 @@ public class Account extends org.apache.avro.specific.SpecificRecordBase impleme
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<Account> getDecoder() {
+  public static BinaryMessageDecoder<AccountTranslation> getDecoder() {
     return DECODER;
   }
 
@@ -49,12 +49,12 @@ public class Account extends org.apache.avro.specific.SpecificRecordBase impleme
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<Account> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<Account>(MODEL$, SCHEMA$, resolver);
+  public static BinaryMessageDecoder<AccountTranslation> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<AccountTranslation>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
-   * Serializes this Account to a ByteBuffer.
+   * Serializes this AccountTranslation to a ByteBuffer.
    * @return a buffer holding the serialized data for this instance
    * @throws java.io.IOException if this instance could not be serialized
    */
@@ -63,37 +63,37 @@ public class Account extends org.apache.avro.specific.SpecificRecordBase impleme
   }
 
   /**
-   * Deserializes a Account from a ByteBuffer.
+   * Deserializes a AccountTranslation from a ByteBuffer.
    * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a Account instance decoded from the given buffer
+   * @return a AccountTranslation instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static Account fromByteBuffer(
+  public static AccountTranslation fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
   private java.lang.CharSequence account;
-  private long client_number;
-  private java.lang.CharSequence firm;
+  private java.lang.CharSequence raw_account;
+  private java.lang.CharSequence source;
 
   /**
    * Default constructor.  Note that this does not initialize fields
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public Account() {}
+  public AccountTranslation() {}
 
   /**
    * All-args constructor.
    * @param account The new value for account
-   * @param client_number The new value for client_number
-   * @param firm The new value for firm
+   * @param raw_account The new value for raw_account
+   * @param source The new value for source
    */
-  public Account(java.lang.CharSequence account, java.lang.Long client_number, java.lang.CharSequence firm) {
+  public AccountTranslation(java.lang.CharSequence account, java.lang.CharSequence raw_account, java.lang.CharSequence source) {
     this.account = account;
-    this.client_number = client_number;
-    this.firm = firm;
+    this.raw_account = raw_account;
+    this.source = source;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -102,8 +102,8 @@ public class Account extends org.apache.avro.specific.SpecificRecordBase impleme
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return account;
-    case 1: return client_number;
-    case 2: return firm;
+    case 1: return raw_account;
+    case 2: return source;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -113,8 +113,8 @@ public class Account extends org.apache.avro.specific.SpecificRecordBase impleme
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: account = (java.lang.CharSequence)value$; break;
-    case 1: client_number = (java.lang.Long)value$; break;
-    case 2: firm = (java.lang.CharSequence)value$; break;
+    case 1: raw_account = (java.lang.CharSequence)value$; break;
+    case 2: source = (java.lang.CharSequence)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -137,83 +137,83 @@ public class Account extends org.apache.avro.specific.SpecificRecordBase impleme
   }
 
   /**
-   * Gets the value of the 'client_number' field.
-   * @return The value of the 'client_number' field.
+   * Gets the value of the 'raw_account' field.
+   * @return The value of the 'raw_account' field.
    */
-  public long getClientNumber() {
-    return client_number;
+  public java.lang.CharSequence getRawAccount() {
+    return raw_account;
   }
 
 
   /**
-   * Sets the value of the 'client_number' field.
+   * Sets the value of the 'raw_account' field.
    * @param value the value to set.
    */
-  public void setClientNumber(long value) {
-    this.client_number = value;
+  public void setRawAccount(java.lang.CharSequence value) {
+    this.raw_account = value;
   }
 
   /**
-   * Gets the value of the 'firm' field.
-   * @return The value of the 'firm' field.
+   * Gets the value of the 'source' field.
+   * @return The value of the 'source' field.
    */
-  public java.lang.CharSequence getFirm() {
-    return firm;
+  public java.lang.CharSequence getSource() {
+    return source;
   }
 
 
   /**
-   * Sets the value of the 'firm' field.
+   * Sets the value of the 'source' field.
    * @param value the value to set.
    */
-  public void setFirm(java.lang.CharSequence value) {
-    this.firm = value;
+  public void setSource(java.lang.CharSequence value) {
+    this.source = value;
   }
 
   /**
-   * Creates a new Account RecordBuilder.
-   * @return A new Account RecordBuilder
+   * Creates a new AccountTranslation RecordBuilder.
+   * @return A new AccountTranslation RecordBuilder
    */
-  public static com.abn.demo.stream.model.Account.Builder newBuilder() {
-    return new com.abn.demo.stream.model.Account.Builder();
+  public static com.abn.demo.stream.model.AccountTranslation.Builder newBuilder() {
+    return new com.abn.demo.stream.model.AccountTranslation.Builder();
   }
 
   /**
-   * Creates a new Account RecordBuilder by copying an existing Builder.
+   * Creates a new AccountTranslation RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new Account RecordBuilder
+   * @return A new AccountTranslation RecordBuilder
    */
-  public static com.abn.demo.stream.model.Account.Builder newBuilder(com.abn.demo.stream.model.Account.Builder other) {
+  public static com.abn.demo.stream.model.AccountTranslation.Builder newBuilder(com.abn.demo.stream.model.AccountTranslation.Builder other) {
     if (other == null) {
-      return new com.abn.demo.stream.model.Account.Builder();
+      return new com.abn.demo.stream.model.AccountTranslation.Builder();
     } else {
-      return new com.abn.demo.stream.model.Account.Builder(other);
+      return new com.abn.demo.stream.model.AccountTranslation.Builder(other);
     }
   }
 
   /**
-   * Creates a new Account RecordBuilder by copying an existing Account instance.
+   * Creates a new AccountTranslation RecordBuilder by copying an existing AccountTranslation instance.
    * @param other The existing instance to copy.
-   * @return A new Account RecordBuilder
+   * @return A new AccountTranslation RecordBuilder
    */
-  public static com.abn.demo.stream.model.Account.Builder newBuilder(com.abn.demo.stream.model.Account other) {
+  public static com.abn.demo.stream.model.AccountTranslation.Builder newBuilder(com.abn.demo.stream.model.AccountTranslation other) {
     if (other == null) {
-      return new com.abn.demo.stream.model.Account.Builder();
+      return new com.abn.demo.stream.model.AccountTranslation.Builder();
     } else {
-      return new com.abn.demo.stream.model.Account.Builder(other);
+      return new com.abn.demo.stream.model.AccountTranslation.Builder(other);
     }
   }
 
   /**
-   * RecordBuilder for Account instances.
+   * RecordBuilder for AccountTranslation instances.
    */
   @org.apache.avro.specific.AvroGenerated
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Account>
-    implements org.apache.avro.data.RecordBuilder<Account> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<AccountTranslation>
+    implements org.apache.avro.data.RecordBuilder<AccountTranslation> {
 
     private java.lang.CharSequence account;
-    private long client_number;
-    private java.lang.CharSequence firm;
+    private java.lang.CharSequence raw_account;
+    private java.lang.CharSequence source;
 
     /** Creates a new Builder */
     private Builder() {
@@ -224,38 +224,38 @@ public class Account extends org.apache.avro.specific.SpecificRecordBase impleme
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.abn.demo.stream.model.Account.Builder other) {
+    private Builder(com.abn.demo.stream.model.AccountTranslation.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.account)) {
         this.account = data().deepCopy(fields()[0].schema(), other.account);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
-      if (isValidValue(fields()[1], other.client_number)) {
-        this.client_number = data().deepCopy(fields()[1].schema(), other.client_number);
+      if (isValidValue(fields()[1], other.raw_account)) {
+        this.raw_account = data().deepCopy(fields()[1].schema(), other.raw_account);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
-      if (isValidValue(fields()[2], other.firm)) {
-        this.firm = data().deepCopy(fields()[2].schema(), other.firm);
+      if (isValidValue(fields()[2], other.source)) {
+        this.source = data().deepCopy(fields()[2].schema(), other.source);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
       }
     }
 
     /**
-     * Creates a Builder by copying an existing Account instance
+     * Creates a Builder by copying an existing AccountTranslation instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.abn.demo.stream.model.Account other) {
+    private Builder(com.abn.demo.stream.model.AccountTranslation other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.account)) {
         this.account = data().deepCopy(fields()[0].schema(), other.account);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.client_number)) {
-        this.client_number = data().deepCopy(fields()[1].schema(), other.client_number);
+      if (isValidValue(fields()[1], other.raw_account)) {
+        this.raw_account = data().deepCopy(fields()[1].schema(), other.raw_account);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.firm)) {
-        this.firm = data().deepCopy(fields()[2].schema(), other.firm);
+      if (isValidValue(fields()[2], other.source)) {
+        this.source = data().deepCopy(fields()[2].schema(), other.source);
         fieldSetFlags()[2] = true;
       }
     }
@@ -274,7 +274,7 @@ public class Account extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'account'.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Account.Builder setAccount(java.lang.CharSequence value) {
+    public com.abn.demo.stream.model.AccountTranslation.Builder setAccount(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.account = value;
       fieldSetFlags()[0] = true;
@@ -294,99 +294,100 @@ public class Account extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'account' field.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Account.Builder clearAccount() {
+    public com.abn.demo.stream.model.AccountTranslation.Builder clearAccount() {
       account = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
     /**
-      * Gets the value of the 'client_number' field.
+      * Gets the value of the 'raw_account' field.
       * @return The value.
       */
-    public long getClientNumber() {
-      return client_number;
+    public java.lang.CharSequence getRawAccount() {
+      return raw_account;
     }
 
 
     /**
-      * Sets the value of the 'client_number' field.
-      * @param value The value of 'client_number'.
+      * Sets the value of the 'raw_account' field.
+      * @param value The value of 'raw_account'.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Account.Builder setClientNumber(long value) {
+    public com.abn.demo.stream.model.AccountTranslation.Builder setRawAccount(java.lang.CharSequence value) {
       validate(fields()[1], value);
-      this.client_number = value;
+      this.raw_account = value;
       fieldSetFlags()[1] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'client_number' field has been set.
-      * @return True if the 'client_number' field has been set, false otherwise.
+      * Checks whether the 'raw_account' field has been set.
+      * @return True if the 'raw_account' field has been set, false otherwise.
       */
-    public boolean hasClientNumber() {
+    public boolean hasRawAccount() {
       return fieldSetFlags()[1];
     }
 
 
     /**
-      * Clears the value of the 'client_number' field.
+      * Clears the value of the 'raw_account' field.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Account.Builder clearClientNumber() {
+    public com.abn.demo.stream.model.AccountTranslation.Builder clearRawAccount() {
+      raw_account = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
     /**
-      * Gets the value of the 'firm' field.
+      * Gets the value of the 'source' field.
       * @return The value.
       */
-    public java.lang.CharSequence getFirm() {
-      return firm;
+    public java.lang.CharSequence getSource() {
+      return source;
     }
 
 
     /**
-      * Sets the value of the 'firm' field.
-      * @param value The value of 'firm'.
+      * Sets the value of the 'source' field.
+      * @param value The value of 'source'.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Account.Builder setFirm(java.lang.CharSequence value) {
+    public com.abn.demo.stream.model.AccountTranslation.Builder setSource(java.lang.CharSequence value) {
       validate(fields()[2], value);
-      this.firm = value;
+      this.source = value;
       fieldSetFlags()[2] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'firm' field has been set.
-      * @return True if the 'firm' field has been set, false otherwise.
+      * Checks whether the 'source' field has been set.
+      * @return True if the 'source' field has been set, false otherwise.
       */
-    public boolean hasFirm() {
+    public boolean hasSource() {
       return fieldSetFlags()[2];
     }
 
 
     /**
-      * Clears the value of the 'firm' field.
+      * Clears the value of the 'source' field.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Account.Builder clearFirm() {
-      firm = null;
+    public com.abn.demo.stream.model.AccountTranslation.Builder clearSource() {
+      source = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public Account build() {
+    public AccountTranslation build() {
       try {
-        Account record = new Account();
+        AccountTranslation record = new AccountTranslation();
         record.account = fieldSetFlags()[0] ? this.account : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.client_number = fieldSetFlags()[1] ? this.client_number : (java.lang.Long) defaultValue(fields()[1]);
-        record.firm = fieldSetFlags()[2] ? this.firm : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.raw_account = fieldSetFlags()[1] ? this.raw_account : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.source = fieldSetFlags()[2] ? this.source : (java.lang.CharSequence) defaultValue(fields()[2]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -397,8 +398,8 @@ public class Account extends org.apache.avro.specific.SpecificRecordBase impleme
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<Account>
-    WRITER$ = (org.apache.avro.io.DatumWriter<Account>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<AccountTranslation>
+    WRITER$ = (org.apache.avro.io.DatumWriter<AccountTranslation>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -406,8 +407,8 @@ public class Account extends org.apache.avro.specific.SpecificRecordBase impleme
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<Account>
-    READER$ = (org.apache.avro.io.DatumReader<Account>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<AccountTranslation>
+    READER$ = (org.apache.avro.io.DatumReader<AccountTranslation>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
@@ -421,9 +422,9 @@ public class Account extends org.apache.avro.specific.SpecificRecordBase impleme
   {
     out.writeString(this.account);
 
-    out.writeLong(this.client_number);
+    out.writeString(this.raw_account);
 
-    out.writeString(this.firm);
+    out.writeString(this.source);
 
   }
 
@@ -434,9 +435,9 @@ public class Account extends org.apache.avro.specific.SpecificRecordBase impleme
     if (fieldOrder == null) {
       this.account = in.readString(this.account instanceof Utf8 ? (Utf8)this.account : null);
 
-      this.client_number = in.readLong();
+      this.raw_account = in.readString(this.raw_account instanceof Utf8 ? (Utf8)this.raw_account : null);
 
-      this.firm = in.readString(this.firm instanceof Utf8 ? (Utf8)this.firm : null);
+      this.source = in.readString(this.source instanceof Utf8 ? (Utf8)this.source : null);
 
     } else {
       for (int i = 0; i < 3; i++) {
@@ -446,11 +447,11 @@ public class Account extends org.apache.avro.specific.SpecificRecordBase impleme
           break;
 
         case 1:
-          this.client_number = in.readLong();
+          this.raw_account = in.readString(this.raw_account instanceof Utf8 ? (Utf8)this.raw_account : null);
           break;
 
         case 2:
-          this.firm = in.readString(this.firm instanceof Utf8 ? (Utf8)this.firm : null);
+          this.source = in.readString(this.source instanceof Utf8 ? (Utf8)this.source : null);
           break;
 
         default:

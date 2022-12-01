@@ -1,0 +1,64 @@
+{
+  "namespace": "com.abn.demo.stream.model",
+  "type": "record",
+  "name": "ParsedTrade",
+  "fields": [
+      { 
+        "name": "trade_id", 
+        "type": "string",
+        "avro.java.string": "String"
+      },
+      { 
+        "name": "raw_trade_id", 
+        "type": "string",
+        "avro.java.string": "String"
+      },      
+      { 
+        "name": "source", 
+        "type": "string",
+        "avro.java.string": "String"
+      },          
+      { 
+        "name": "account",  
+        "type": "string",
+        "avro.java.string": "String"
+      },
+      { 
+        "name": "product", 
+        "type": "string",
+        "avro.java.string": "String"
+      },
+      { 
+        "name": "exchange",
+        "type": ["null", "string"], // optional
+        "avro.java.string": "String"
+      },  
+      { 
+        "name": "raw_account",  
+        "type": "string",
+        "avro.java.string": "String"
+      },
+      { 
+        "name": "raw_product", 
+        "type": "string",
+        "avro.java.string": "String"
+      },
+      { 
+        "name": "raw_exchange",
+        "type": ["null", "string"], // optional
+        "avro.java.string": "String"
+      },        
+      { 
+        "name": "price",
+        "type": "double"
+      },      
+      { 
+        "name": "quantity", 
+        "type": "int"
+      },
+      { 
+        "name": "execution_time",
+        "type": "long"
+      }    
+    ]
+}

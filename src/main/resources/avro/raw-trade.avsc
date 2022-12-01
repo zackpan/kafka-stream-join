@@ -1,13 +1,18 @@
 {
   "namespace": "com.abn.demo.stream.model",
   "type": "record",
-  "name": "Trade",
+  "name": "RawTrade",
   "fields": [
       { 
         "name": "trade_id", 
         "type": "string",
         "avro.java.string": "String"
       },
+      { 
+        "name": "source", 
+        "type": "string",
+        "avro.java.string": "String"
+      },    
       { 
         "name": "account",  
         "type": "string",

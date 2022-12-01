@@ -13,26 +13,26 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class Trade extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -6801426674533524989L;
+public class RawTrade extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 3320843221929003040L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Trade\",\"namespace\":\"com.abn.demo.stream.model\",\"fields\":[{\"name\":\"trade_id\",\"type\":\"string\",\"avro.java.string\":\"String\"},{\"name\":\"account\",\"type\":\"string\",\"avro.java.string\":\"String\"},{\"name\":\"product\",\"type\":\"string\",\"avro.java.string\":\"String\"},{\"name\":\"exchange\",\"type\":[\"null\",\"string\"],\"avro.java.string\":\"String\"},{\"name\":\"price\",\"type\":\"double\"},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"execution_time\",\"type\":\"long\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RawTrade\",\"namespace\":\"com.abn.demo.stream.model\",\"fields\":[{\"name\":\"trade_id\",\"type\":\"string\",\"avro.java.string\":\"String\"},{\"name\":\"source\",\"type\":\"string\",\"avro.java.string\":\"String\"},{\"name\":\"account\",\"type\":\"string\",\"avro.java.string\":\"String\"},{\"name\":\"product\",\"type\":\"string\",\"avro.java.string\":\"String\"},{\"name\":\"exchange\",\"type\":[\"null\",\"string\"],\"avro.java.string\":\"String\"},{\"name\":\"price\",\"type\":\"double\"},{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"execution_time\",\"type\":\"long\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<Trade> ENCODER =
-      new BinaryMessageEncoder<Trade>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<RawTrade> ENCODER =
+      new BinaryMessageEncoder<RawTrade>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<Trade> DECODER =
-      new BinaryMessageDecoder<Trade>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<RawTrade> DECODER =
+      new BinaryMessageDecoder<RawTrade>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<Trade> getEncoder() {
+  public static BinaryMessageEncoder<RawTrade> getEncoder() {
     return ENCODER;
   }
 
@@ -40,7 +40,7 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<Trade> getDecoder() {
+  public static BinaryMessageDecoder<RawTrade> getDecoder() {
     return DECODER;
   }
 
@@ -49,12 +49,12 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<Trade> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<Trade>(MODEL$, SCHEMA$, resolver);
+  public static BinaryMessageDecoder<RawTrade> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<RawTrade>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
-   * Serializes this Trade to a ByteBuffer.
+   * Serializes this RawTrade to a ByteBuffer.
    * @return a buffer holding the serialized data for this instance
    * @throws java.io.IOException if this instance could not be serialized
    */
@@ -63,17 +63,18 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
   }
 
   /**
-   * Deserializes a Trade from a ByteBuffer.
+   * Deserializes a RawTrade from a ByteBuffer.
    * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a Trade instance decoded from the given buffer
+   * @return a RawTrade instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static Trade fromByteBuffer(
+  public static RawTrade fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
   private java.lang.CharSequence trade_id;
+  private java.lang.CharSequence source;
   private java.lang.CharSequence account;
   private java.lang.CharSequence product;
   private java.lang.CharSequence exchange;
@@ -86,11 +87,12 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public Trade() {}
+  public RawTrade() {}
 
   /**
    * All-args constructor.
    * @param trade_id The new value for trade_id
+   * @param source The new value for source
    * @param account The new value for account
    * @param product The new value for product
    * @param exchange The new value for exchange
@@ -98,8 +100,9 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
    * @param quantity The new value for quantity
    * @param execution_time The new value for execution_time
    */
-  public Trade(java.lang.CharSequence trade_id, java.lang.CharSequence account, java.lang.CharSequence product, java.lang.CharSequence exchange, java.lang.Double price, java.lang.Integer quantity, java.lang.Long execution_time) {
+  public RawTrade(java.lang.CharSequence trade_id, java.lang.CharSequence source, java.lang.CharSequence account, java.lang.CharSequence product, java.lang.CharSequence exchange, java.lang.Double price, java.lang.Integer quantity, java.lang.Long execution_time) {
     this.trade_id = trade_id;
+    this.source = source;
     this.account = account;
     this.product = product;
     this.exchange = exchange;
@@ -114,12 +117,13 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return trade_id;
-    case 1: return account;
-    case 2: return product;
-    case 3: return exchange;
-    case 4: return price;
-    case 5: return quantity;
-    case 6: return execution_time;
+    case 1: return source;
+    case 2: return account;
+    case 3: return product;
+    case 4: return exchange;
+    case 5: return price;
+    case 6: return quantity;
+    case 7: return execution_time;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -129,12 +133,13 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: trade_id = (java.lang.CharSequence)value$; break;
-    case 1: account = (java.lang.CharSequence)value$; break;
-    case 2: product = (java.lang.CharSequence)value$; break;
-    case 3: exchange = (java.lang.CharSequence)value$; break;
-    case 4: price = (java.lang.Double)value$; break;
-    case 5: quantity = (java.lang.Integer)value$; break;
-    case 6: execution_time = (java.lang.Long)value$; break;
+    case 1: source = (java.lang.CharSequence)value$; break;
+    case 2: account = (java.lang.CharSequence)value$; break;
+    case 3: product = (java.lang.CharSequence)value$; break;
+    case 4: exchange = (java.lang.CharSequence)value$; break;
+    case 5: price = (java.lang.Double)value$; break;
+    case 6: quantity = (java.lang.Integer)value$; break;
+    case 7: execution_time = (java.lang.Long)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -154,6 +159,23 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
    */
   public void setTradeId(java.lang.CharSequence value) {
     this.trade_id = value;
+  }
+
+  /**
+   * Gets the value of the 'source' field.
+   * @return The value of the 'source' field.
+   */
+  public java.lang.CharSequence getSource() {
+    return source;
+  }
+
+
+  /**
+   * Sets the value of the 'source' field.
+   * @param value the value to set.
+   */
+  public void setSource(java.lang.CharSequence value) {
+    this.source = value;
   }
 
   /**
@@ -259,47 +281,48 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
   }
 
   /**
-   * Creates a new Trade RecordBuilder.
-   * @return A new Trade RecordBuilder
+   * Creates a new RawTrade RecordBuilder.
+   * @return A new RawTrade RecordBuilder
    */
-  public static com.abn.demo.stream.model.Trade.Builder newBuilder() {
-    return new com.abn.demo.stream.model.Trade.Builder();
+  public static com.abn.demo.stream.model.RawTrade.Builder newBuilder() {
+    return new com.abn.demo.stream.model.RawTrade.Builder();
   }
 
   /**
-   * Creates a new Trade RecordBuilder by copying an existing Builder.
+   * Creates a new RawTrade RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new Trade RecordBuilder
+   * @return A new RawTrade RecordBuilder
    */
-  public static com.abn.demo.stream.model.Trade.Builder newBuilder(com.abn.demo.stream.model.Trade.Builder other) {
+  public static com.abn.demo.stream.model.RawTrade.Builder newBuilder(com.abn.demo.stream.model.RawTrade.Builder other) {
     if (other == null) {
-      return new com.abn.demo.stream.model.Trade.Builder();
+      return new com.abn.demo.stream.model.RawTrade.Builder();
     } else {
-      return new com.abn.demo.stream.model.Trade.Builder(other);
+      return new com.abn.demo.stream.model.RawTrade.Builder(other);
     }
   }
 
   /**
-   * Creates a new Trade RecordBuilder by copying an existing Trade instance.
+   * Creates a new RawTrade RecordBuilder by copying an existing RawTrade instance.
    * @param other The existing instance to copy.
-   * @return A new Trade RecordBuilder
+   * @return A new RawTrade RecordBuilder
    */
-  public static com.abn.demo.stream.model.Trade.Builder newBuilder(com.abn.demo.stream.model.Trade other) {
+  public static com.abn.demo.stream.model.RawTrade.Builder newBuilder(com.abn.demo.stream.model.RawTrade other) {
     if (other == null) {
-      return new com.abn.demo.stream.model.Trade.Builder();
+      return new com.abn.demo.stream.model.RawTrade.Builder();
     } else {
-      return new com.abn.demo.stream.model.Trade.Builder(other);
+      return new com.abn.demo.stream.model.RawTrade.Builder(other);
     }
   }
 
   /**
-   * RecordBuilder for Trade instances.
+   * RecordBuilder for RawTrade instances.
    */
   @org.apache.avro.specific.AvroGenerated
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Trade>
-    implements org.apache.avro.data.RecordBuilder<Trade> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<RawTrade>
+    implements org.apache.avro.data.RecordBuilder<RawTrade> {
 
     private java.lang.CharSequence trade_id;
+    private java.lang.CharSequence source;
     private java.lang.CharSequence account;
     private java.lang.CharSequence product;
     private java.lang.CharSequence exchange;
@@ -316,71 +339,79 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.abn.demo.stream.model.Trade.Builder other) {
+    private Builder(com.abn.demo.stream.model.RawTrade.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.trade_id)) {
         this.trade_id = data().deepCopy(fields()[0].schema(), other.trade_id);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
-      if (isValidValue(fields()[1], other.account)) {
-        this.account = data().deepCopy(fields()[1].schema(), other.account);
+      if (isValidValue(fields()[1], other.source)) {
+        this.source = data().deepCopy(fields()[1].schema(), other.source);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
-      if (isValidValue(fields()[2], other.product)) {
-        this.product = data().deepCopy(fields()[2].schema(), other.product);
+      if (isValidValue(fields()[2], other.account)) {
+        this.account = data().deepCopy(fields()[2].schema(), other.account);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
       }
-      if (isValidValue(fields()[3], other.exchange)) {
-        this.exchange = data().deepCopy(fields()[3].schema(), other.exchange);
+      if (isValidValue(fields()[3], other.product)) {
+        this.product = data().deepCopy(fields()[3].schema(), other.product);
         fieldSetFlags()[3] = other.fieldSetFlags()[3];
       }
-      if (isValidValue(fields()[4], other.price)) {
-        this.price = data().deepCopy(fields()[4].schema(), other.price);
+      if (isValidValue(fields()[4], other.exchange)) {
+        this.exchange = data().deepCopy(fields()[4].schema(), other.exchange);
         fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
-      if (isValidValue(fields()[5], other.quantity)) {
-        this.quantity = data().deepCopy(fields()[5].schema(), other.quantity);
+      if (isValidValue(fields()[5], other.price)) {
+        this.price = data().deepCopy(fields()[5].schema(), other.price);
         fieldSetFlags()[5] = other.fieldSetFlags()[5];
       }
-      if (isValidValue(fields()[6], other.execution_time)) {
-        this.execution_time = data().deepCopy(fields()[6].schema(), other.execution_time);
+      if (isValidValue(fields()[6], other.quantity)) {
+        this.quantity = data().deepCopy(fields()[6].schema(), other.quantity);
         fieldSetFlags()[6] = other.fieldSetFlags()[6];
+      }
+      if (isValidValue(fields()[7], other.execution_time)) {
+        this.execution_time = data().deepCopy(fields()[7].schema(), other.execution_time);
+        fieldSetFlags()[7] = other.fieldSetFlags()[7];
       }
     }
 
     /**
-     * Creates a Builder by copying an existing Trade instance
+     * Creates a Builder by copying an existing RawTrade instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.abn.demo.stream.model.Trade other) {
+    private Builder(com.abn.demo.stream.model.RawTrade other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.trade_id)) {
         this.trade_id = data().deepCopy(fields()[0].schema(), other.trade_id);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.account)) {
-        this.account = data().deepCopy(fields()[1].schema(), other.account);
+      if (isValidValue(fields()[1], other.source)) {
+        this.source = data().deepCopy(fields()[1].schema(), other.source);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.product)) {
-        this.product = data().deepCopy(fields()[2].schema(), other.product);
+      if (isValidValue(fields()[2], other.account)) {
+        this.account = data().deepCopy(fields()[2].schema(), other.account);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.exchange)) {
-        this.exchange = data().deepCopy(fields()[3].schema(), other.exchange);
+      if (isValidValue(fields()[3], other.product)) {
+        this.product = data().deepCopy(fields()[3].schema(), other.product);
         fieldSetFlags()[3] = true;
       }
-      if (isValidValue(fields()[4], other.price)) {
-        this.price = data().deepCopy(fields()[4].schema(), other.price);
+      if (isValidValue(fields()[4], other.exchange)) {
+        this.exchange = data().deepCopy(fields()[4].schema(), other.exchange);
         fieldSetFlags()[4] = true;
       }
-      if (isValidValue(fields()[5], other.quantity)) {
-        this.quantity = data().deepCopy(fields()[5].schema(), other.quantity);
+      if (isValidValue(fields()[5], other.price)) {
+        this.price = data().deepCopy(fields()[5].schema(), other.price);
         fieldSetFlags()[5] = true;
       }
-      if (isValidValue(fields()[6], other.execution_time)) {
-        this.execution_time = data().deepCopy(fields()[6].schema(), other.execution_time);
+      if (isValidValue(fields()[6], other.quantity)) {
+        this.quantity = data().deepCopy(fields()[6].schema(), other.quantity);
         fieldSetFlags()[6] = true;
+      }
+      if (isValidValue(fields()[7], other.execution_time)) {
+        this.execution_time = data().deepCopy(fields()[7].schema(), other.execution_time);
+        fieldSetFlags()[7] = true;
       }
     }
 
@@ -398,7 +429,7 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'trade_id'.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Trade.Builder setTradeId(java.lang.CharSequence value) {
+    public com.abn.demo.stream.model.RawTrade.Builder setTradeId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.trade_id = value;
       fieldSetFlags()[0] = true;
@@ -418,9 +449,49 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * Clears the value of the 'trade_id' field.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Trade.Builder clearTradeId() {
+    public com.abn.demo.stream.model.RawTrade.Builder clearTradeId() {
       trade_id = null;
       fieldSetFlags()[0] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'source' field.
+      * @return The value.
+      */
+    public java.lang.CharSequence getSource() {
+      return source;
+    }
+
+
+    /**
+      * Sets the value of the 'source' field.
+      * @param value The value of 'source'.
+      * @return This builder.
+      */
+    public com.abn.demo.stream.model.RawTrade.Builder setSource(java.lang.CharSequence value) {
+      validate(fields()[1], value);
+      this.source = value;
+      fieldSetFlags()[1] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'source' field has been set.
+      * @return True if the 'source' field has been set, false otherwise.
+      */
+    public boolean hasSource() {
+      return fieldSetFlags()[1];
+    }
+
+
+    /**
+      * Clears the value of the 'source' field.
+      * @return This builder.
+      */
+    public com.abn.demo.stream.model.RawTrade.Builder clearSource() {
+      source = null;
+      fieldSetFlags()[1] = false;
       return this;
     }
 
@@ -438,10 +509,10 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'account'.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Trade.Builder setAccount(java.lang.CharSequence value) {
-      validate(fields()[1], value);
+    public com.abn.demo.stream.model.RawTrade.Builder setAccount(java.lang.CharSequence value) {
+      validate(fields()[2], value);
       this.account = value;
-      fieldSetFlags()[1] = true;
+      fieldSetFlags()[2] = true;
       return this;
     }
 
@@ -450,7 +521,7 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'account' field has been set, false otherwise.
       */
     public boolean hasAccount() {
-      return fieldSetFlags()[1];
+      return fieldSetFlags()[2];
     }
 
 
@@ -458,9 +529,9 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * Clears the value of the 'account' field.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Trade.Builder clearAccount() {
+    public com.abn.demo.stream.model.RawTrade.Builder clearAccount() {
       account = null;
-      fieldSetFlags()[1] = false;
+      fieldSetFlags()[2] = false;
       return this;
     }
 
@@ -478,10 +549,10 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'product'.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Trade.Builder setProduct(java.lang.CharSequence value) {
-      validate(fields()[2], value);
+    public com.abn.demo.stream.model.RawTrade.Builder setProduct(java.lang.CharSequence value) {
+      validate(fields()[3], value);
       this.product = value;
-      fieldSetFlags()[2] = true;
+      fieldSetFlags()[3] = true;
       return this;
     }
 
@@ -490,7 +561,7 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'product' field has been set, false otherwise.
       */
     public boolean hasProduct() {
-      return fieldSetFlags()[2];
+      return fieldSetFlags()[3];
     }
 
 
@@ -498,9 +569,9 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * Clears the value of the 'product' field.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Trade.Builder clearProduct() {
+    public com.abn.demo.stream.model.RawTrade.Builder clearProduct() {
       product = null;
-      fieldSetFlags()[2] = false;
+      fieldSetFlags()[3] = false;
       return this;
     }
 
@@ -518,10 +589,10 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'exchange'.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Trade.Builder setExchange(java.lang.CharSequence value) {
-      validate(fields()[3], value);
+    public com.abn.demo.stream.model.RawTrade.Builder setExchange(java.lang.CharSequence value) {
+      validate(fields()[4], value);
       this.exchange = value;
-      fieldSetFlags()[3] = true;
+      fieldSetFlags()[4] = true;
       return this;
     }
 
@@ -530,7 +601,7 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'exchange' field has been set, false otherwise.
       */
     public boolean hasExchange() {
-      return fieldSetFlags()[3];
+      return fieldSetFlags()[4];
     }
 
 
@@ -538,9 +609,9 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * Clears the value of the 'exchange' field.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Trade.Builder clearExchange() {
+    public com.abn.demo.stream.model.RawTrade.Builder clearExchange() {
       exchange = null;
-      fieldSetFlags()[3] = false;
+      fieldSetFlags()[4] = false;
       return this;
     }
 
@@ -558,10 +629,10 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'price'.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Trade.Builder setPrice(double value) {
-      validate(fields()[4], value);
+    public com.abn.demo.stream.model.RawTrade.Builder setPrice(double value) {
+      validate(fields()[5], value);
       this.price = value;
-      fieldSetFlags()[4] = true;
+      fieldSetFlags()[5] = true;
       return this;
     }
 
@@ -570,7 +641,7 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'price' field has been set, false otherwise.
       */
     public boolean hasPrice() {
-      return fieldSetFlags()[4];
+      return fieldSetFlags()[5];
     }
 
 
@@ -578,8 +649,8 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * Clears the value of the 'price' field.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Trade.Builder clearPrice() {
-      fieldSetFlags()[4] = false;
+    public com.abn.demo.stream.model.RawTrade.Builder clearPrice() {
+      fieldSetFlags()[5] = false;
       return this;
     }
 
@@ -597,10 +668,10 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'quantity'.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Trade.Builder setQuantity(int value) {
-      validate(fields()[5], value);
+    public com.abn.demo.stream.model.RawTrade.Builder setQuantity(int value) {
+      validate(fields()[6], value);
       this.quantity = value;
-      fieldSetFlags()[5] = true;
+      fieldSetFlags()[6] = true;
       return this;
     }
 
@@ -609,7 +680,7 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'quantity' field has been set, false otherwise.
       */
     public boolean hasQuantity() {
-      return fieldSetFlags()[5];
+      return fieldSetFlags()[6];
     }
 
 
@@ -617,8 +688,8 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * Clears the value of the 'quantity' field.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Trade.Builder clearQuantity() {
-      fieldSetFlags()[5] = false;
+    public com.abn.demo.stream.model.RawTrade.Builder clearQuantity() {
+      fieldSetFlags()[6] = false;
       return this;
     }
 
@@ -636,10 +707,10 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'execution_time'.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Trade.Builder setExecutionTime(long value) {
-      validate(fields()[6], value);
+    public com.abn.demo.stream.model.RawTrade.Builder setExecutionTime(long value) {
+      validate(fields()[7], value);
       this.execution_time = value;
-      fieldSetFlags()[6] = true;
+      fieldSetFlags()[7] = true;
       return this;
     }
 
@@ -648,7 +719,7 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'execution_time' field has been set, false otherwise.
       */
     public boolean hasExecutionTime() {
-      return fieldSetFlags()[6];
+      return fieldSetFlags()[7];
     }
 
 
@@ -656,23 +727,24 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       * Clears the value of the 'execution_time' field.
       * @return This builder.
       */
-    public com.abn.demo.stream.model.Trade.Builder clearExecutionTime() {
-      fieldSetFlags()[6] = false;
+    public com.abn.demo.stream.model.RawTrade.Builder clearExecutionTime() {
+      fieldSetFlags()[7] = false;
       return this;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public Trade build() {
+    public RawTrade build() {
       try {
-        Trade record = new Trade();
+        RawTrade record = new RawTrade();
         record.trade_id = fieldSetFlags()[0] ? this.trade_id : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.account = fieldSetFlags()[1] ? this.account : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.product = fieldSetFlags()[2] ? this.product : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.exchange = fieldSetFlags()[3] ? this.exchange : (java.lang.CharSequence) defaultValue(fields()[3]);
-        record.price = fieldSetFlags()[4] ? this.price : (java.lang.Double) defaultValue(fields()[4]);
-        record.quantity = fieldSetFlags()[5] ? this.quantity : (java.lang.Integer) defaultValue(fields()[5]);
-        record.execution_time = fieldSetFlags()[6] ? this.execution_time : (java.lang.Long) defaultValue(fields()[6]);
+        record.source = fieldSetFlags()[1] ? this.source : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.account = fieldSetFlags()[2] ? this.account : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.product = fieldSetFlags()[3] ? this.product : (java.lang.CharSequence) defaultValue(fields()[3]);
+        record.exchange = fieldSetFlags()[4] ? this.exchange : (java.lang.CharSequence) defaultValue(fields()[4]);
+        record.price = fieldSetFlags()[5] ? this.price : (java.lang.Double) defaultValue(fields()[5]);
+        record.quantity = fieldSetFlags()[6] ? this.quantity : (java.lang.Integer) defaultValue(fields()[6]);
+        record.execution_time = fieldSetFlags()[7] ? this.execution_time : (java.lang.Long) defaultValue(fields()[7]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -683,8 +755,8 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<Trade>
-    WRITER$ = (org.apache.avro.io.DatumWriter<Trade>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<RawTrade>
+    WRITER$ = (org.apache.avro.io.DatumWriter<RawTrade>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -692,8 +764,8 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<Trade>
-    READER$ = (org.apache.avro.io.DatumReader<Trade>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<RawTrade>
+    READER$ = (org.apache.avro.io.DatumReader<RawTrade>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
@@ -706,6 +778,8 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
     throws java.io.IOException
   {
     out.writeString(this.trade_id);
+
+    out.writeString(this.source);
 
     out.writeString(this.account);
 
@@ -734,6 +808,8 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
     if (fieldOrder == null) {
       this.trade_id = in.readString(this.trade_id instanceof Utf8 ? (Utf8)this.trade_id : null);
 
+      this.source = in.readString(this.source instanceof Utf8 ? (Utf8)this.source : null);
+
       this.account = in.readString(this.account instanceof Utf8 ? (Utf8)this.account : null);
 
       this.product = in.readString(this.product instanceof Utf8 ? (Utf8)this.product : null);
@@ -752,21 +828,25 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
       this.execution_time = in.readLong();
 
     } else {
-      for (int i = 0; i < 7; i++) {
+      for (int i = 0; i < 8; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.trade_id = in.readString(this.trade_id instanceof Utf8 ? (Utf8)this.trade_id : null);
           break;
 
         case 1:
-          this.account = in.readString(this.account instanceof Utf8 ? (Utf8)this.account : null);
+          this.source = in.readString(this.source instanceof Utf8 ? (Utf8)this.source : null);
           break;
 
         case 2:
-          this.product = in.readString(this.product instanceof Utf8 ? (Utf8)this.product : null);
+          this.account = in.readString(this.account instanceof Utf8 ? (Utf8)this.account : null);
           break;
 
         case 3:
+          this.product = in.readString(this.product instanceof Utf8 ? (Utf8)this.product : null);
+          break;
+
+        case 4:
           if (in.readIndex() != 1) {
             in.readNull();
             this.exchange = null;
@@ -775,15 +855,15 @@ public class Trade extends org.apache.avro.specific.SpecificRecordBase implement
           }
           break;
 
-        case 4:
+        case 5:
           this.price = in.readDouble();
           break;
 
-        case 5:
+        case 6:
           this.quantity = in.readInt();
           break;
 
-        case 6:
+        case 7:
           this.execution_time = in.readLong();
           break;
 

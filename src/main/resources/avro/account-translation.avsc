@@ -1,0 +1,22 @@
+{
+  "namespace": "com.abn.demo.stream.model",
+  "type": "record",
+  "name": "AccountTranslation",
+  "fields": [
+      { 
+        "name": "account", 
+        "type": "string",
+        "avro.java.string": "String"
+      },
+      { 
+        "name": "raw_account",  
+        "type": "string",
+        "avro.java.string": "String"
+      },
+      { 
+        "name": "source", 
+        "type": "string",
+        "avro.java.string": "String"
+      }
+    ]
+}

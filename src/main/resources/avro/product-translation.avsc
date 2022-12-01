@@ -1,19 +1,20 @@
 {
   "namespace": "com.abn.demo.stream.model",
   "type": "record",
-  "name": "Account",
+  "name": "ProductTranslation",
   "fields": [
       { 
-        "name": "account", 
+        "name": "product", 
         "type": "string",
         "avro.java.string": "String"
       },
       { 
-        "name": "client_number",  
-        "type": "long" 
+        "name": "raw_product",  
+        "type": "string",
+        "avro.java.string": "String" 
       },
       { 
-        "name": "firm", 
+        "name": "source", 
         "type": "string",
         "avro.java.string": "String"
       }
