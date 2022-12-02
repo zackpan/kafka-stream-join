@@ -1,9 +1,9 @@
 spring:
   kafka:
     bootstrap-servers:
-      - 10.248.149.147:9092
+      - 192.168.1.188:9092
     properties:
-      schema.registry.url: http://10.248.149.147:8091
+      schema.registry.url: http://192.168.1.188:8081
     consumer:
       group-id: group_id
       auto-offset-reset: latest
