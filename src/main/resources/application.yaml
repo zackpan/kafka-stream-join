@@ -1,9 +1,9 @@
 spring:
   kafka:
     bootstrap-servers:
-      - 192.168.1.188:9092
+      - 192.168.1.204:9092
     properties:
-      schema.registry.url: http://192.168.1.188:8081
+      schema.registry.url: http://192.168.1.204:8081
     consumer:
       group-id: group_id
       auto-offset-reset: latest
@@ -16,8 +16,7 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
  
     streams:
-      application-id:
-        - stream-demo
+      application-id: stream-demo
       default.deserialization.exception.handler: org.apache.kafka.streams.errors.LogAndFailExceptionHandler
   application:
     name: stream-demo
