@@ -5,7 +5,7 @@ projects:
     source:
       location: 'https://github.com/zackpan/kafka-stream-join.git'
       type: git
-      branch: master
+      branch: main
 attributes:
   persistVolumes: 'false'
 components:
