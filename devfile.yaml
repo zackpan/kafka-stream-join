@@ -2,7 +2,11 @@ schemaVersion: 2.1.0
 metadata:
   name: general-workspace
   namespace: developer-che
-
+projects:
+  - name: "general-workspace"
+    git:
+      remotes:
+        origin: "https://github.com/zackpan/kafka-stream-join.git"
 attributes:
   controller.devfile.io/devworkspace-config:
     name: devworkspace-config
