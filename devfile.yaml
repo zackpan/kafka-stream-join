@@ -1,56 +1,82 @@
+schemaVersion: 2.1.0
 metadata:
-  name: kafka-stream
-projects:
-  - name: kafka-stream-join
-    source:
-      location: 'https://github.com/zackpan/kafka-stream-join.git'
-      type: git
-      branch: main
+  name: general-workspace
+  namespace: developer-che
+
 attributes:
-  persistVolumes: 'false'
+  controller.devfile.io/devworkspace-config:
+    name: devworkspace-config
+    namespace: eclipse-che
+  controller.devfile.io/storage-type: per-user
 components:
-  - id: redhat/java/latest
-    type: chePlugin
-  - mountSources: true
-    memoryLimit: 2048Mi
-    type: dockerimage
-    volumes:
-      - name: m2
-        containerPath: /home/user/.m2
-    alias: maven
-    image: 'quay.io/eclipse/che-java11-maven:nightly'
-    env:
-      - value: /home/user/.m2
-        name: MAVEN_CONFIG
-      - value: >-
-          -XX:MaxRAMPercentage=50 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10
-          -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4
-          -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true
-          -Xms20m -Djava.security.egd=file:/dev/./urandom -Duser.home=/home/user
-        name: MAVEN_OPTS
-      - value: >-
-          -XX:MaxRAMPercentage=50 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10
-          -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4
-          -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true
-          -Xms20m -Djava.security.egd=file:/dev/./urandom
-        name: JAVA_OPTS
-      - value: >-
-          -XX:MaxRAMPercentage=50 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10
-          -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4
-          -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true
-          -Xms20m -Djava.security.egd=file:/dev/./urandom
-        name: JAVA_TOOL_OPTIONS
-apiVersion: 1.0.0
-commands:
-  - name: maven build
-    actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/console-java-simple'
-        type: exec
-        command: mvn clean install
-        component: maven
-  - name: maven build and run
-    actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/console-java-simple'
-        type: exec
-        command: mvn clean install && java -jar ./target/*.jar
-        component: maven
+  - attributes:
+      che-code.eclipse.org/contribute-cpuLimit: true
+      che-code.eclipse.org/contribute-cpuRequest: true
+      che-code.eclipse.org/contribute-endpoint/che-code: 3100
+      che-code.eclipse.org/contribute-endpoint/code-redirect-1: 13131
+      che-code.eclipse.org/contribute-endpoint/code-redirect-2: 13132
+      che-code.eclipse.org/contribute-endpoint/code-redirect-3: 13133
+      che-code.eclipse.org/contribute-entry-point: true
+      che-code.eclipse.org/contribute-memoryLimit: true
+      che-code.eclipse.org/contribute-memoryRequest: true
+      che-code.eclipse.org/contribute-volume-mount/checode: /checode
+      che-code.eclipse.org/contributed-container: universal-developer-image
+    container:
+      command:
+        - /checode/entrypoint-volume.sh
+      cpuLimit: 1000m
+      cpuRequest: 100m
+      endpoints:
+        - attributes:
+            contributed-by: che-code.eclipse.org
+            cookiesAuthEnabled: true
+            discoverable: false
+            type: main
+            urlRewriteSupported: true
+          exposure: public
+          name: che-code
+          path: '?tkn=eclipse-che'
+          protocol: https
+          secure: false
+          targetPort: 3100
+        - attributes:
+            contributed-by: che-code.eclipse.org
+            discoverable: false
+            urlRewriteSupported: true
+          exposure: public
+          name: code-redirect-1
+          protocol: http
+          targetPort: 13131
+        - attributes:
+            contributed-by: che-code.eclipse.org
+            discoverable: false
+            urlRewriteSupported: true
+          exposure: public
+          name: code-redirect-2
+          protocol: http
+          targetPort: 13132
+        - attributes:
+            contributed-by: che-code.eclipse.org
+            discoverable: false
+            urlRewriteSupported: true
+          exposure: public
+          name: code-redirect-3
+          protocol: http
+          targetPort: 13133
+      env:
+        - name: CHE_DASHBOARD_URL
+          value: 'https://eclipse-che.apps-crc.testing'
+        - name: CHE_PLUGIN_REGISTRY_URL
+          value: 'https://eclipse-che.apps-crc.testing/plugin-registry/v3'
+        - name: CHE_PLUGIN_REGISTRY_INTERNAL_URL
+          value: 'http://plugin-registry.eclipse-che.svc:8080/v3'
+        - name: OPENVSX_REGISTRY_URL
+          value: 'https://open-vsx.org'
+      image: 'quay.io/devfile/universal-developer-image:ubi8-38da5c2'
+      memoryLimit: 2048Mi
+      memoryRequest: 512Mi
+      sourceMapping: /projects
+      volumeMounts:
+        - name: checode
+          path: /checode
+    name: universal-developer-image
